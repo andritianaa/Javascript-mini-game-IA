@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bb4c9e8c-b521-4b4e-a411-d27fd923b366" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Matiere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matiere.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,22 +86,30 @@
       <option name="project" value="LOCAL" />
       <updated>1627502361885</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="indentation">
+      <created>1627503574902</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1627503574902</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="nampiana commentaire" />
-    <option name="LAST_COMMIT_MESSAGE" value="nampiana commentaire" />
+    <MESSAGE value="indentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="indentation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="22" key="#Project_Structure" timestamp="1627491892249">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="22" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1627491892249" />
-    <state x="493" y="0" key="CommitChangelistDialog2" timestamp="1627502358541">
+    <state x="493" y="0" key="CommitChangelistDialog2" timestamp="1627503571995">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="493" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1627502358541" />
+    <state x="493" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1627503571995" />
     <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1627493177588">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
