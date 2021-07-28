@@ -40,7 +40,6 @@ public class Main {
             else if (liste[i].getSerie() == 2 && liste[i].getValeur().equals(true)) listSerie[2]++;
             else if (liste[i].getSerie() == 3 && liste[i].getValeur().equals(true)) listSerie[3]++;
         }
-        
         System.out.println("\n");
         for(int i = 1; i < liste.length; ++i) {
             System.out.println(liste[i].getNom()+" "+liste[i].getValeur());

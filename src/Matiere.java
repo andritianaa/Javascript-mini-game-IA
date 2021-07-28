@@ -7,7 +7,6 @@ public class Matiere {
         this.nom = pnom;
         this.valeur = false;
     }
-    
     public Matiere(String pnom, int pserie) {
         this.nom = pnom;
         this.serie = pserie;
@@ -18,17 +17,13 @@ public class Matiere {
     public int getSerie() {
         return this.serie;
     }
-
     public String getNom() {
         return this.nom;
     }
-
     public Boolean getValeur() {
         return this.valeur;
     }
-    
     /**seter**/
-
     public void setValeur(boolean pvaleur) {
         this.valeur = pvaleur;
     }
