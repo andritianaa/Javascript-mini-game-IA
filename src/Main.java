@@ -40,10 +40,23 @@ public class Main {
             else if (liste[i].getSerie() == 2 && liste[i].getValeur().equals(true)) listSerie[2]++;
             else if (liste[i].getSerie() == 3 && liste[i].getValeur().equals(true)) listSerie[3]++;
         }
-        System.out.println("\n");
-        for(int i = 1; i < liste.length; ++i) {
-            System.out.println(liste[i].getNom()+" "+liste[i].getValeur());
+        for(int i=1; i<=listSerie.length-1; i++ ){
+                int tmp;
+                String temp;
+            for(int j=i+1; j<=listSerie.length; j++){
+                if(listSerie[i]<listSerie[j]) {
+                    tmp = listSerie[i];
+                    listSerie[i] = listSerie[j];
+                    listSerie[j] = tmp;
+
+                    temp = listSerieName[i];
+                    listSerieName[i] = listSerieName[j];
+                    listSerieName[j] = temp;
+                }
+            }
         }
+
+
         System.out.println("\n");
         for(int i = 1; i < listSerie.length; ++i) {
             System.out.println(listSerieName[i]+" "+listSerie[i]);
