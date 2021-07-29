@@ -2,29 +2,25 @@ public class Matiere {
     private String nom;
     private Boolean valeur;
     private int serie;
-    
-    public Matiere(String pnom) {
-        this.nom = pnom;
-        this.valeur = false;
-    }
+
     public Matiere(String pnom, int pserie) {
-        this.nom = pnom;
-        this.serie = pserie;
-        this.valeur = false;
+        nom = pnom;
+        serie = pserie;
+        valeur = false;
     }
     /**geter**/
     
     public int getSerie() {
-        return this.serie;
+        return serie;
     }
     public String getNom() {
-        return this.nom;
+        return nom;
     }
     public Boolean getValeur() {
-        return this.valeur;
+        return valeur;
     }
     /**seter**/
     public void setValeur(boolean pvaleur) {
-        this.valeur = pvaleur;
+        valeur = pvaleur;
     }
 }
