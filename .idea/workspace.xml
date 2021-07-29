@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bb4c9e8c-b521-4b4e-a411-d27fd923b366" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mini_IA/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mini_IA/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mini_IA/Matiere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mini_IA/Matiere.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627503574902</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="indentation">
+      <created>1627568445223</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1627568445223</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -107,33 +116,37 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="22" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1627491892249" />
-    <state x="493" y="0" key="CommitChangelistDialog2" timestamp="1627503571995">
+    <state x="493" y="0" key="CommitChangelistDialog2" timestamp="1627568441223">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="493" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1627503571995" />
+    <state x="493" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1627568441223" />
     <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1627493177588">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1627493177588" />
-    <state width="1323" height="503" key="GridCell.Tab.0.bottom" timestamp="1627568369553">
+    <state width="1323" height="503" key="GridCell.Tab.0.bottom" timestamp="1627590917852">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="503" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1627568369553" />
-    <state width="1323" height="503" key="GridCell.Tab.0.center" timestamp="1627568369553">
+    <state width="1323" height="503" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1627590917852" />
+    <state width="1323" height="503" key="GridCell.Tab.0.center" timestamp="1627590917852">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="503" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1627568369553" />
-    <state width="1323" height="503" key="GridCell.Tab.0.left" timestamp="1627568369553">
+    <state width="1323" height="503" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1627590917852" />
+    <state width="1323" height="503" key="GridCell.Tab.0.left" timestamp="1627590917852">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="503" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1627568369553" />
-    <state width="1323" height="503" key="GridCell.Tab.0.right" timestamp="1627568369553">
+    <state width="1323" height="503" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1627590917852" />
+    <state width="1323" height="503" key="GridCell.Tab.0.right" timestamp="1627590917852">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="503" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1627568369553" />
+    <state width="1323" height="503" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1627590917852" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1627498359529">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1627498359529" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1627587627862">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1627587627862" />
   </component>
 </project>
