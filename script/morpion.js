@@ -109,7 +109,7 @@ function getSquareElementNodes() {
 
 function highlightSquares(blinks) {
   if (blinks === undefined) {
-    blinks = 10;
+    blinks = 5;
   }
 
   const nodes = getSquareElementNodes();
@@ -119,7 +119,7 @@ function highlightSquares(blinks) {
   if (blinks >= 0) {
     setTimeout(() => {
       AISelectMove(blinks - 1);
-    }, 100);
+    }, 250);
     const x = Math.floor(Math.random() * 3);
     const y = Math.floor(Math.random() * 3);
     const node = document.getElementById(x + '.' + y);
