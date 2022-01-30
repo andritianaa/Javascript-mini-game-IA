@@ -1,11 +1,25 @@
 console.log('Mandeha');
+let win;
+let lost;
+//alaina avy ary amin'ny locale storage ny win sy lost
+if(localStorage.getItem("winCountMorpion")){
+  win = localStorage.getItem("winCountMorpion");
+}else{
+  win = 0;
+}
+if(localStorage.getItem("lostCountMorpion")){
+  lost = localStorage.getItem("lostCountMorpion");
+}else{
+  lost = 0;
+}
 
 window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('counts').innerText = `Victoires : ${win} Défaites : ${lost}`;
   setup();
 });
 
 //initialisation
-const BOARDSTATE = {
+const GRIDSTATE = {
   player: 1,
   ai: 2,
   blank: 3,
@@ -14,13 +28,20 @@ const BOARDSTATE = {
 
 let GAMESTATE = null;
 
-function setup() {
+const setup = () => {
   createBoard();
   initializeState();
 }
 
+document.getElementById('restart').addEventListener('click',() => {
+  const rows = document.getElementById('rows');
+  document.getElementById('description').innerText ='';
+  rows.innerHTML='';
+  createBoard();
+  initializeState();
+})
 //fonction creation table 3x3 
-function createBoard() {
+const createBoard = () => {
   const rows = document.getElementById('rows');
   for (let x = 0; x < 3; x++) {
     const currentRow = document.createElement('div');
@@ -39,14 +60,14 @@ function createBoard() {
   }
 }
 
-function initializeState() {
+const initializeState = () => {
   GAMESTATE = {
     turn: 'player',
     active: true,
   };
 }
 
-function handlePlayerClick(evt) {
+const handlePlayerClick = (evt) => {
   const isBlank = !evt.target.src.length;
   if (isBlank &&
     GAMESTATE.active &&
@@ -57,8 +78,8 @@ function handlePlayerClick(evt) {
   }
 }
 
-function checkGameOver() {
-  const winner = evaluateBoard(getBoardStates());
+const checkGameOver = () => {
+  const winner = evaluateBoard(getGridStates());
   if (winner == null) {
     return;
   }
@@ -67,37 +88,41 @@ function checkGameOver() {
 
   let desc = '';
 
-  if (winner == BOARDSTATE.ai) {
+  if (winner == GRIDSTATE.ai) {
     desc = 'Vous avez perdu';
-  } else if (winner == BOARDSTATE.player) {
+    lost++;
+    localStorage.setItem("lostCountMorpion", lost);
+  } else if (winner == GRIDSTATE.blank) {
     desc = 'Vous avez gagné';
+    win++;
+    localStorage.setItem("lostCountMorpion", lost);
   } else {
-    desc = 'Il y a égalité'
+    desc = 'Il y a égalité';
   }
-
+  document.getElementById('counts').innerText = `Victoires : ${win} Défaites : ${lost}`;
   document.getElementById('description').innerText = desc;
 }
 
-function getBoardStates() {
-  const boardStates = [];
+const getGridStates = () => {
+  const GRIDSTATEs = [];
   for (let x = 0; x < 3; x++) {
     const row = [];
     for (let y = 0; y < 3; y++) {
       const node = document.getElementById(x + '.' + y);
       if (node.src.includes('x.png')) {
-        row.push(BOARDSTATE.player);
+        row.push(GRIDSTATE.player);
       } else if (node.src.includes('o.png')) {
-        row.push(BOARDSTATE.ai);
+        row.push(GRIDSTATE.ai);
       } else {
-        row.push(BOARDSTATE.blank);
+        row.push(GRIDSTATE.blank);
       }
     }
-    boardStates.push(row);
+    GRIDSTATEs.push(row);
   }
-  return boardStates;
+  return GRIDSTATEs;
 }
 
-function getSquareElementNodes() {
+const getSquareElementNodes = () => {
   const nodes = [];
   for (let x = 0; x < 3; x++) {
     for (let y = 0; y < 3; y++) {
@@ -107,7 +132,7 @@ function getSquareElementNodes() {
   return nodes;
 }
 
-function highlightSquares(blinks) {
+const highlightSquares = (blinks) => {
   if (blinks === undefined) {
     blinks = 5;
   }
@@ -119,7 +144,7 @@ function highlightSquares(blinks) {
   if (blinks >= 0) {
     setTimeout(() => {
       AISelectMove(blinks - 1);
-    }, 250);
+    }, 10);
     const x = Math.floor(Math.random() * 3);
     const y = Math.floor(Math.random() * 3);
     const node = document.getElementById(x + '.' + y);
@@ -129,16 +154,16 @@ function highlightSquares(blinks) {
   return false;
 }
 
-function AISelectMove(blinks) {
+const AISelectMove = (blinks) => {
   GAMESTATE.turn = 'ai';
 
-//manao animation ohatrany hoe miheritreritra (juste pour animation)
+  //manao animation ohatrany hoe miheritreritra (juste pour animation)
   if (highlightSquares(blinks)) {
     return;
   }
 
-  const boardStates = getBoardStates();
-  const [_, choice] = minimax(boardStates, BOARDSTATE.ai);
+  const GRIDSTATEs = getGridStates();
+  const [_, choice] = minimax(GRIDSTATEs, GRIDSTATE.ai);
 
   if (choice != null) {
     const [x, y] = choice;
@@ -150,9 +175,10 @@ function AISelectMove(blinks) {
   GAMESTATE.turn = 'player';
 }
 
-function evaluateBoard(boardStates) {
+//toutes les états possibles pour qu'un joueur peut gagner
+const evaluateBoard = (GRIDSTATEs) => {
   const winningStates = [
-    // Horizontales
+    // états en horizontales et verticales
     [
       [0, 0],
       [0, 1],
@@ -184,7 +210,7 @@ function evaluateBoard(boardStates) {
       [2, 2]
     ],
 
-    // Diagonales
+    // états en diagonales
     [
       [0, 0],
       [1, 1],
@@ -197,17 +223,22 @@ function evaluateBoard(boardStates) {
     ],
   ];
 
+  //comparer les états des cases occupés par le joueur courant, celui qui vient de placer au tableau précédent
+  //si il y a correspondance, ce joueur gagne
   for (const possibleState of winningStates) {
     let currentPlayer = null;
+    //variable de teste
     let isWinner = true;
+
     for (const [x, y] of possibleState) {
-      const occupant = boardStates[x][y];
-      if (currentPlayer == null && occupant != BOARDSTATE.blank) {
+      const occupant = GRIDSTATEs[x][y];
+      if (currentPlayer == null && occupant != GRIDSTATE.blank) {
         currentPlayer = occupant;
       } else if (currentPlayer != occupant) {
         isWinner = false;
       }
     }
+    //aucune correspondance alors isWinner reste inchangé donc le joueur courrent gagne
     if (isWinner) {
       return currentPlayer;
     }
@@ -216,32 +247,32 @@ function evaluateBoard(boardStates) {
   let hasMoves = false;
   for (let x = 0; x < 3; x++) {
     for (let y = 0; y < 3; y++) {
-      if (boardStates[x][y] == BOARDSTATE.blank) {
+      if (GRIDSTATEs[x][y] == GRIDSTATE.blank) {
         hasMoves = true;
       }
     }
   }
   if (!hasMoves) {
-    return BOARDSTATE.draw;
+    return GRIDSTATE.draw;
   }
 
   return null;
 }
 
-function minimax(boardStates, player) {
-  // First check if the game has already been won.
-  const winner = evaluateBoard(boardStates);
-  if (winner == BOARDSTATE.ai) {
+const minimax = (GRIDSTATEs, player) => {
+  // tester si la partie a déjà été gagné
+  const winner = evaluateBoard(GRIDSTATEs);
+  if (winner == GRIDSTATE.ai) {
     return [1, null];
-  } else if (winner == BOARDSTATE.player) {
+  } else if (winner == GRIDSTATE.player) {
     return [-1, null];
   }
 
   let move, moveScore;
-  if (player == BOARDSTATE.ai) {
-    [moveScore, move] = minimaxMaximize(boardStates);
+  if (player == GRIDSTATE.ai) {
+    [moveScore, move] = minimaxMax(GRIDSTATEs);
   } else {
-    [moveScore, move] = minimaxMinimize(boardStates);
+    [moveScore, move] = minimaxMin(GRIDSTATEs);
   }
 
   if (move == null) {
@@ -252,19 +283,19 @@ function minimax(boardStates, player) {
   return [moveScore, move];
 }
 
-function minimaxMaximize(boardStates) {
+const minimaxMax = (GRIDSTATEs) => {
   let moveScore = Number.NEGATIVE_INFINITY;
   let move = null;
 
   for (let x = 0; x < 3; x++) {
     for (let y = 0; y < 3; y++) {
-      if (boardStates[x][y] == BOARDSTATE.blank) {
-        const newBoardStates = boardStates.map(r => r.slice());
+      if (GRIDSTATEs[x][y] == GRIDSTATE.blank) {
+        const newGRIDSTATEs = GRIDSTATEs.map(r => r.slice());
 
-        newBoardStates[x][y] = BOARDSTATE.ai;
+        newGRIDSTATEs[x][y] = GRIDSTATE.ai;
 
         const [newMoveScore, _] = minimax(
-          newBoardStates, BOARDSTATE.player);
+          newGRIDSTATEs, GRIDSTATE.player);
 
         if (newMoveScore > moveScore) {
           move = [x, y];
@@ -277,19 +308,19 @@ function minimaxMaximize(boardStates) {
   return [moveScore, move];
 }
 
-function minimaxMinimize(boardStates) {
+const minimaxMin = (GRIDSTATEs) => {
   let moveScore = Number.POSITIVE_INFINITY;
   let move = null;
 
   for (let x = 0; x < 3; x++) {
     for (let y = 0; y < 3; y++) {
-      if (boardStates[x][y] == BOARDSTATE.blank) {
-        const newBoardStates = boardStates.map(r => r.slice());
+      if (GRIDSTATEs[x][y] == GRIDSTATE.blank) {
+        const newGRIDSTATEs = GRIDSTATEs.map(r => r.slice());
 
-        newBoardStates[x][y] = BOARDSTATE.player;
+        newGRIDSTATEs[x][y] = GRIDSTATE.player;
 
         const [newMoveScore, _] = minimax(
-          newBoardStates, BOARDSTATE.ai);
+          newGRIDSTATEs, GRIDSTATE.ai);
 
         if (newMoveScore < moveScore) {
           move = [x, y];
@@ -300,56 +331,4 @@ function minimaxMinimize(boardStates) {
   }
 
   return [moveScore, move];
-}
-
-
-function minimax2(boardStates, aiTurn) {
-  // First check if the game has already been won.
-  const winner = evaluateBoard(boardStates);
-  if (winner == BOARDSTATE.ai) {
-    return [1, null];
-  } else if (winner == BOARDSTATE.player) {
-    return [-1, null];
-  }
-
-  let moveCost = Number.NEGATIVE_INFINITY;
-  if (!aiTurn) {
-    moveCost = Number.POSITIVE_INFINITY;
-  }
-  let move = null;
-
-  for (let x = 0; x < 3; x++) {
-    for (let y = 0; y < 3; y++) {
-      if (boardStates[x][y] == BOARDSTATE.blank) {
-        const newBoardStates = boardStates.map(r => r.slice());
-
-        if (aiTurn) {
-          newBoardStates[x][y] = BOARDSTATE.ai;
-        } else {
-          newBoardStates[x][y] = BOARDSTATE.player;
-        }
-
-        const [newMoveCost, _] = minimax(newBoardStates, !aiTurn);
-
-        if (aiTurn) {
-          if (newMoveCost > moveCost) {
-            move = [x, y];
-            moveCost = newMoveCost;
-          }
-        } else {
-          if (newMoveCost < moveCost) {
-            move = [x, y];
-            moveCost = newMoveCost;
-          }
-        }
-      }
-    }
-  }
-
-  if (move != null) {
-    return [moveCost, move];
-  }
-
-  // No move, so it's a draw
-  return [0, null];
 }
