@@ -131,7 +131,7 @@ const getSquareElementNodes = () => {
   }
   return nodes;
 }
-
+//anim
 const highlightSquares = (blinks) => {
   if (blinks === undefined) {
     blinks = 5;
