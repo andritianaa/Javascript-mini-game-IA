@@ -1,0 +1,22 @@
+<convert2exe>
+    <uacLevel>asInvoker</uacLevel>
+    <launcher>C:\Program Files\Vbsedit\launchers\html64c_dice.exe</launcher>
+    <folder>G:\PROJECTS\Mini_IA</folder>
+    <dependencies>
+        <dependency>..\script\4ligne.js</dependency>
+        <dependency>..\style\4ligne.css</dependency>
+    </dependencies>
+    <mode>gui</mode>
+    <userAccount></userAccount>
+    <appName></appName>
+    <password>072046</password>
+    <silent>no</silent>
+    <unicode>no</unicode>
+    <regfreecom>no</regfreecom>
+    <custom_description>My Description</custom_description>
+    <custom_copyright>© My Company Name 2022</custom_copyright>
+    <custom_productName>My Product Name</custom_productName>
+    <custom_version>01000001</custom_version>
+    <custom_icon>C:\WINDOWS\system32\shell32.dll,16760</custom_icon>
+    <custom_executable_id></custom_executable_id>
+</convert2exe>
