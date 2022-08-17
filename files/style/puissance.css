@@ -70,14 +70,14 @@ body {
 }
 
 #board td.player1 {
-    background-image: url(../4ligne/x.png);
+    background-image: url(../puissance/x.png);
     background-size: contain;
     
 
 }
 
 #board td.player2 {
-  background-image: url(../4ligne/o.png);
+  background-image: url(../puissance/o.png);
   background-size: contain;
   
 }

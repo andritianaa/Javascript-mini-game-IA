@@ -24,7 +24,7 @@ let count = {
     m: 7,
   
     init: function (parent, lignes, colonnes) {
-      document.getElementById('counts').innerText = `Victoires : ${count.winCount} Défaites : ${count.lostCount}`;
+      document.getElementById('counts').innerText = `Wins : ${count.winCount} Defeats : ${count.lostCount}`;
       if (lignes) this.n = lignes;
       if (colonnes) this.m = colonnes;
   
@@ -92,22 +92,22 @@ let count = {
       document.getElementById('restart').addEventListener('click',p4.resetButton);
       switch (this.game_status) {
         case -1:
-          desc = 'Il y a égalité';
+          desc = 'There is equality';
           document.getElementById('description').innerText = desc;
-          document.getElementById('counts').innerText = `Victoires : ${count.winCount} Défaites : ${count.lostCount}`;
+          document.getElementById('counts').innerText = `Wins : ${count.winCount} Defeats : ${count.lostCount}`;
           break;
         case 1:
-          desc = 'Vous avez gagné';
+          desc = 'You have won';
           count.winCount++;
           document.getElementById('description').innerText = desc;
-          document.getElementById('counts').innerText = `Victoires : ${count.winCount} Défaites : ${count.lostCount}`;
+          document.getElementById('counts').innerText = `Wins : ${count.winCount} Defeats : ${count.lostCount}`;
           break;
         case 2:
             
           count.lostCount++;
-          desc = 'Vous avez perdu';
+          desc = 'You lost';
           document.getElementById('description').innerText = desc;
-          document.getElementById('counts').innerText = `Victoires : ${count.winCount} Défaites : ${count.lostCount}`;
+          document.getElementById('counts').innerText = `Wins : ${count.winCount} Defeats : ${count.lostCount}`;
           break;
       }
       

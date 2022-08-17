@@ -2,19 +2,19 @@ console.log('Mandeha');
 let win;
 let lost;
 //alaina avy ary amin'ny locale storage ny win sy lost
-if(localStorage.getItem("winCountMorpion")){
-  win = localStorage.getItem("winCountMorpion");
+if(localStorage.getItem("winCounttictactoe")){
+  win = localStorage.getItem("winCounttictactoe");
 }else{
   win = 0;
 }
-if(localStorage.getItem("lostCountMorpion")){
-  lost = localStorage.getItem("lostCountMorpion");
+if(localStorage.getItem("lostCounttictactoe")){
+  lost = localStorage.getItem("lostCounttictactoe");
 }else{
   lost = 0;
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('counts').innerText = `Victoires : ${win} Défaites : ${lost}`;
+  document.getElementById('counts').innerText = `Wins : ${win} Defeats : ${lost}`;
   setup();
 });
 
@@ -89,17 +89,17 @@ const checkGameOver = () => {
   let desc = '';
 
   if (winner == GRIDSTATE.ai) {
-    desc = 'Vous avez perdu';
+    desc = 'You lost';
     lost++;
-    localStorage.setItem("lostCountMorpion", lost);
+    localStorage.setItem("lostCounttictactoe", lost);
   } else if (winner == GRIDSTATE.blank) {
-    desc = 'Vous avez gagné';
+    desc = 'You have won';
     win++;
-    localStorage.setItem("lostCountMorpion", lost);
+    localStorage.setItem("lostCounttictactoe", lost);
   } else {
-    desc = 'Il y a égalité';
+    desc = 'There is equality';
   }
-  document.getElementById('counts').innerText = `Victoires : ${win} Défaites : ${lost}`;
+  document.getElementById('counts').innerText = `Wins : ${win} Defeats : ${lost}`;
   document.getElementById('description').innerText = desc;
 }
 
